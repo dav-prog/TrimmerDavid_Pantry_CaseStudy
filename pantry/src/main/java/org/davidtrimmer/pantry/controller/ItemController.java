@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +24,9 @@ public class ItemController {
     }
     @GetMapping("/")
     public String landingPage(Model theModel) {
-        List<Item> theItems = itemService.getItems();
 
+        List<Item> theItems = itemService.getItems();
+        Collections.shuffle(theItems);
         List<Item> items = theItems.stream()
                 .limit(8)
                 .collect(Collectors.toList());
@@ -46,11 +48,6 @@ public class ItemController {
 
 
         return "index";
-    }
-
-    @GetMapping("/item-name/{name}")
-    public Item retrieveItemByName(@PathVariable String name){
-        return itemService.findItemByName(name);
     }
 
 }
