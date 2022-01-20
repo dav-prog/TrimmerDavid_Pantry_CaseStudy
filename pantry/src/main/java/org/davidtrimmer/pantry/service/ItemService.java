@@ -13,4 +13,6 @@ public interface ItemService {
     void saveItem(Item theItem);
 
     void deleteItem(int theId);
+
+    Item findItemByName(String name);
 }

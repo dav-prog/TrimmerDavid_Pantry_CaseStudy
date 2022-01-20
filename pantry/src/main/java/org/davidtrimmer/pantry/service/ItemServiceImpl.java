@@ -50,4 +50,10 @@ public class ItemServiceImpl implements ItemService{
     public void deleteItem(int theId) {
         itemRepository.deleteById(theId);
     }
+
+    @Override
+    public Item findItemByName(String name) {
+
+        return itemRepository.findByNameEquals(name);
+    }
 }

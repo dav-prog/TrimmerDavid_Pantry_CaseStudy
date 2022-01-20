@@ -3,23 +3,33 @@ package org.davidtrimmer.pantry.service;
 import org.davidtrimmer.pantry.dao.UserRepository;
 import org.davidtrimmer.pantry.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 
     private UserRepository userRepository;
 
     // need to inject user dao
     @Autowired
-    public UserServiceImpl(UserRepository theUserRepository) {
+    public UserDetailsServiceImpl(UserRepository theUserRepository) {
         userRepository = theUserRepository;
     }
 
+//    @Override
+//    public UserDetails loadUserByUsername(String username) {
+//        User user = userRepository.findByUsername(username);
+//        if (user == null) {
+//            throw new UsernameNotFoundException(username);
+//        }
+//        return new MyUserPrincipal(user);
+//    }
 
     @Override
     public List<User> getUsers() {

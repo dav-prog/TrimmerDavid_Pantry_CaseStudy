@@ -1,7 +1,7 @@
 package org.davidtrimmer.pantry.controller;
 
 import org.davidtrimmer.pantry.entity.User;
-import org.davidtrimmer.pantry.service.UserService;
+import org.davidtrimmer.pantry.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +12,10 @@ import java.util.List;
 public class UserRestController {
 
 
-    private UserService userService;
+    private UserDetailsService userService;
 
     @Autowired
-    public UserRestController(UserService theUserService) {
+    public UserRestController(UserDetailsService theUserService) {
         userService = theUserService;
     }
 

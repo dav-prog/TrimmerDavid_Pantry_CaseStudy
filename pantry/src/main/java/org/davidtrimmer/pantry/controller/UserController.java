@@ -2,7 +2,7 @@ package org.davidtrimmer.pantry.controller;
 
 import org.davidtrimmer.pantry.dao.UserRepository;
 import org.davidtrimmer.pantry.entity.User;
-import org.davidtrimmer.pantry.service.UserService;
+import org.davidtrimmer.pantry.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserController {
 
-    private UserService userService;
+    private UserDetailsService userService;
     private UserRepository userRepository;
 
     @Autowired
