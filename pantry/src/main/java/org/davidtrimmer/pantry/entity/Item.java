@@ -1,7 +1,6 @@
 package org.davidtrimmer.pantry.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name="item")

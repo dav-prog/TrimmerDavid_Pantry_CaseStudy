@@ -56,4 +56,13 @@ public class ItemServiceImpl implements ItemService{
 
         return itemRepository.findByNameEquals(name);
     }
+
+    @Override
+    public void deleteItemByName(String name) {
+        Item tempItem = itemRepository.findByNameEquals(name);
+        if (tempItem == null) {
+            throw new RuntimeException("Item not found - " + name);
+        }
+        itemRepository.delete(tempItem);
+    }
 }
