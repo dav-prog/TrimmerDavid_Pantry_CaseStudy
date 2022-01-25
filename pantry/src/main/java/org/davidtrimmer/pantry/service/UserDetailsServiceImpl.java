@@ -3,8 +3,6 @@ package org.davidtrimmer.pantry.service;
 import org.davidtrimmer.pantry.dao.UserRepository;
 import org.davidtrimmer.pantry.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,14 +20,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userRepository = theUserRepository;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) {
-//        User user = userRepository.findByUsername(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException(username);
-//        }
-//        return new MyUserPrincipal(user);
-//    }
+    @Override
+    public User findByUserName(String userName) {
+        return userRepository.findByUserNameEquals(userName);
+    }
 
     @Override
     public List<User> getUsers() {
