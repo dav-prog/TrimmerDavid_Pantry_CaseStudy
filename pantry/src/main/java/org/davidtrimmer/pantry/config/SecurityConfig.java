@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
@@ -62,10 +62,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/systems/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
-                .loginPage("/showLoginPage")
-                .loginProcessingUrl("/authenticateTheUser")
-                .successHandler(customAuthenticationSuccessHandler)
-                .permitAll()
+                    .loginPage("/showLoginPage")
+                    .loginProcessingUrl("/authenticateTheUser")
+                    .successHandler(customAuthenticationSuccessHandler)
+                    .permitAll()
                 .and()
                 .logout().permitAll()
                 .and()
