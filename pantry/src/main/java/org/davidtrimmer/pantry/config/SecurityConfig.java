@@ -40,22 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                // custom form at the request mapping
-//                // need to create a controller for this request mapping
-//                .loginPage("/showLoginPage")
-//                // login form should POST data to this URL for processing (check user id and password)
-//                // no controller request mapping required for this
-//                .loginProcessingUrl("/authenticateTheUser")
-//                .permitAll();
-//        http.authorizeRequests()
-//                .antMatchers("/resources/**","/static/**")
-//                .permitAll()
-//                .anyRequest()
-//                .permitAll();
+
         http.authorizeRequests()
                 .antMatchers("/").hasRole("EMPLOYEE")
                 .antMatchers("/leaders/**").hasRole("MANAGER")
@@ -67,7 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .successHandler(customAuthenticationSuccessHandler)
                     .permitAll()
                 .and()
-                .logout().permitAll()
+                .logout()
+                    .logoutSuccessUrl("/")
+                    .permitAll()
+
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="utf-8" />
@@ -38,11 +39,21 @@
                     </li>
                 </ul>
                 </form>
+                <div sec:authorize="!isAuthenticated()">
                 <form class="d-flex" th:action="@{/showLoginPage}">
                     <button class="btn btn-outline-dark" type="submit">
                         Login
                     </button>
                 </form>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <form class="d-flex" th:action="@{/logout}">
+                        <button class="btn btn-outline-dark" type="submit">
+                            Logout
+                        </button>
+                    </form>
+
+                </div>
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
